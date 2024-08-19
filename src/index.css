@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input::-webkit-search-cancel-button {
+    appearance: none;
+}
+
+*::-webkit-scrollbar {
+    @apply bg-transparent w-2
+}
+
+*::-webkit-scrollbar-thumb {
+    @apply bg-secondary-dark rounded-full
+}
+
+
+.scrollbar-hidden::-webkit-scrollbar-thumb {
+    @apply bg-transparent;
+}
+
+.scrollbar-hidden:hover::-webkit-scrollbar-thumb {
+    @apply bg-secondary-hover;
+}
+
+.loading-bar {
+    animation: 'loading-bar 2s linear infinite',
+    
+}
+
+@keyframes loading-bar {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.text-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Menampilkan hanya dua baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Menambahkan "..." di akhir baris yang terpotong */
+}

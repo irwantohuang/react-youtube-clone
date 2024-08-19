@@ -1,0 +1,68 @@
+import { ReactNode, RefObject } from "react"
+
+export interface VideoSectionProps {
+    title?: string,
+    children: ReactNode,
+    visibleItem?: number,
+    displayMode?: string,
+    setDisplayMode?: (value: string) => void
+}
+
+export interface VideoProps {
+    children: ReactNode;
+}
+
+export interface VideoHeaderProps {
+    profileUrl: string,
+    channelName: string,
+}
+
+export interface VideoOverlayProps {
+    showOption: boolean,
+    setShowOption: (value: boolean) => void
+}
+
+export interface VideoThumbnailProps {
+    videoId: string,
+    thumbnailUrl: string,
+    title: string,
+    playVideo: boolean,
+    videoDuration: number,
+    videoUrl: string,
+}
+
+export interface VideoBodyProps {
+    children: ReactNode,
+    displayMode: string
+}
+
+export interface VideoBodyProfileProps {
+    profileUrl: string,
+    channelName: string,
+}
+
+export interface VideoBodyTitleProps {
+    title: string
+}
+
+export interface VideoBodyAccountProps {
+    channelId: string,
+    channelName: string,
+    channelVerified: boolean,
+}
+
+export interface VideoBodyFooterProps {
+    viewCount: number,
+    publishedAt: Date
+}
+
+export interface VideoBodyDescriptionProps {
+    description: string
+}
+
+
+export interface VideoBodyOptionProps {
+    showOption: boolean,
+    setShowOption: (value: boolean) => void,
+    containerRef: RefObject<HTMLDivElement>,
+}
