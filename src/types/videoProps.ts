@@ -1,6 +1,6 @@
 import { ReactNode, RefObject } from "react"
 
-export interface VideoSectionProps {
+export interface VideoLayoutProps {
     title?: string,
     children: ReactNode,
     visibleItem?: number,
@@ -64,5 +64,6 @@ export interface VideoBodyDescriptionProps {
 export interface VideoBodyOptionProps {
     showOption: boolean,
     setShowOption: (value: boolean) => void,
+    type: string,
     containerRef: RefObject<HTMLDivElement>,
 }

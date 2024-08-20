@@ -1,24 +1,24 @@
 import Button from "../elements/Button";
 import { RefObject, useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { homeOptions, subscriptionOptions } from "../../data/options";
+import { homeOptions, shortOptions, subscriptionOptions } from "../../data/options";
 
 interface OptionModalProps {
     targetRef: RefObject<HTMLDivElement>;
     showOption: boolean
+    type: string
 }
 
-const OptionModal = ({ targetRef, showOption }: OptionModalProps) => {
-    const location = useLocation();
+const OptionModal = ({ targetRef, type, showOption }: OptionModalProps) => {
     const modalRef = useRef<HTMLDivElement>(null);
     const [transform, setTransform] = useState("");
-    const [options, setOptions] = useState(homeOptions);
 
-    useEffect(() => {
-        const pathName = location.pathname;
-        if (pathName === '/subscriptions') setOptions(subscriptionOptions);
-        else if (pathName === "/") setOptions(homeOptions);
-    }, [location.pathname, options])
+    let options;
+    switch (type) {
+        case "home": options = homeOptions; break;
+        case "subscriptions": options = subscriptionOptions; break;
+        case "shorts": options = shortOptions; break;
+        default: options = homeOptions; break;
+    }
 
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const OptionModal = ({ targetRef, showOption }: OptionModalProps) => {
     return <div ref={modalRef} className={`bg-white overscroll-normal rounded-md absolute z-[1002] ${transform}`}>
         <div className="flex flex-col w-[250px] h-full shadow-xl py-2">
             {options.map((section, index) => (
-                <section className="flex flex-col w-full whitespace-nowrap h-full">
+                <section key={section.name} className="flex flex-col w-full whitespace-nowrap h-full">
                     {section.children.map((option) => (
                         <Button key={option.name} variant="ghost" className="flex items-center gap-2 w-full px-4 rounded-none py-2 font-light text-sm">
                             <option.icon />

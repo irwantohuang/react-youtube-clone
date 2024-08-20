@@ -5,6 +5,7 @@ import { formatPublishedAt, formatViews } from "../../utils/utility";
 import Button from "../elements/Button";
 import OptionModal from "../modals/OptionModal";
 import { VideoBodyAccountProps, VideoBodyDescriptionProps, VideoBodyFooterProps, VideoBodyOptionProps, VideoBodyProfileProps, VideoBodyProps, VideoBodyTitleProps } from "../../types/videoProps";
+import Image from "../elements/Image";
 
 
 
@@ -14,14 +15,11 @@ const VideoBody = ({ children, displayMode }: VideoBodyProps) => {
     </div>;
 }
 
-
-
 const Profile = ({ profileUrl, channelName }: VideoBodyProfileProps) => {
     return <a href="#" className="flex flex-shrink-0">
-        <img src={profileUrl} alt={channelName} className="w-10 h-10 rounded-full" />
+        <Image src={profileUrl} alt={channelName} variant="profile" size="profile-small" />
     </a>
 }
-
 
 
 const Title = ({ title }: VideoBodyTitleProps) => {
@@ -51,12 +49,12 @@ const Description = ({ description }: VideoBodyDescriptionProps) => {
 
 
 
-const Option = ({showOption, containerRef, setShowOption}: VideoBodyOptionProps) => {
+const Option = ({showOption, containerRef, type, setShowOption}: VideoBodyOptionProps) => {
     return <div className="relative">
         <Button variant="ghostNonHover" size="icon" className="w-8 h-8 m-0 p-1 justify-self-end" onClick={() => setShowOption(!showOption)}>
             <EllipsisVertical className="w-5 h-5" />
         </Button>
-        {showOption && <OptionModal targetRef={containerRef} showOption={showOption} />}
+        {showOption && <OptionModal type={type} targetRef={containerRef} showOption={showOption} />}
     </div>
 }
 

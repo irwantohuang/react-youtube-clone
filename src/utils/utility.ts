@@ -1,5 +1,3 @@
-import { VideoType } from "../types/video";
-
 const timeAgo: {amount: number, name: Intl.RelativeTimeFormatUnit}[] = [
     { amount: 60, name: "seconds" },
     { amount: 60, name: "minutes" },
@@ -53,33 +51,22 @@ export const getLink = (id: string, type: string) => {
 }
 
 
-export const shuffleArray = (array: VideoType[]): VideoType[] => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j: number = Math.floor(Math.random() * (i + 1));
 
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+
+export const calculateVisibleItems = (contentWidth: number, columns: number): number => {
+    const isSmallScreen = () => window.innerWidth < 1024;
+    const sidebarWidth = isSmallScreen() ? 72 : 304;
+    let items = Math.floor(((window.innerWidth - sidebarWidth) / contentWidth) * columns);
+
+    if (items % 2 !== 0) items -= 1;
+    return items;
 }
 
+export const handleEscKey = (callback: () => void) => {
+    const handler = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') callback();
+    }
 
-type SortableFields = keyof VideoType['contentDetails'] | keyof VideoType['channel'];
-
-export const sortArray = (array: VideoType[], sortOrder: 'asc' | 'desc', sortBy: SortableFields): VideoType[] => {
-    return array.slice().sort((a, b) => {
-        // Get the values to compare
-        const x = (sortBy in a.contentDetails) ? a.contentDetails[sortBy as keyof VideoType['contentDetails']] : a.channel[sortBy as keyof VideoType['channel']];
-        const y = (sortBy in b.contentDetails) ? b.contentDetails[sortBy as keyof VideoType['contentDetails']] : b.channel[sortBy as keyof VideoType['channel']];
-
-        // Ensure values are treated as strings for comparison
-        const xValue = String(x);
-        const yValue = String(y);
-
-        // Debugging output
-        console.log("Comparing x:", xValue, "with y:", yValue);
-
-        if (xValue < yValue) return sortOrder === 'asc' ? -1 : 1;
-        if (xValue > yValue) return sortOrder === 'asc' ? 1 : -1;
-        return 0;
-    });
-};
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+}

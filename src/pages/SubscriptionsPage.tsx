@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import VideoSection from "../components/video/VideoSection";
+import VideoLayout from "../components/video/VideoLayout";
 import { videos } from "../data/videos";
 import VideoGrid from "../components/video/VideoGrid";
 import VideoList from "../components/video/VideoList";
 import { useSearchParams } from "react-router-dom";
-import { sortArray } from "../utils/utility";
+import { calculateVisibleItems } from "../utils/utility";
 
 const SubscriptionsPage = () => {
     const [searchParams] = useSearchParams();
@@ -15,17 +15,12 @@ const SubscriptionsPage = () => {
         const handler = () => {
             const w = window.innerWidth
             if (w < 640) setVisibleItem(4)
-            else if (w < 1536) setVisibleItem(6)
-            else if (w < 1900) setVisibleItem(8)
-            else if (w >= 1900) setVisibleItem(10)
+            if (w >= 640) setVisibleItem(calculateVisibleItems(311, 2))
         }
-
         handler();
         window.addEventListener("resize", handler);
         return () => window.removeEventListener("resize", handler)
     })
-
-
 
     useEffect(() => {
         const flow = searchParams.get("flow");
@@ -39,15 +34,15 @@ const SubscriptionsPage = () => {
 
     return (
         <div className="overflow-hidden py-2">
-            <VideoSection title="Latest" displayMode={displayMode} visibleItem={visibleItem}>
-                {sortArray(videos, 'desc', 'name').map((video) => (
+            <VideoLayout title="Latest" displayMode={displayMode} visibleItem={visibleItem}>
+                {videos.map((video) => (
                     displayMode === 'Grid' ?
                         <VideoGrid key={video.id} {...video} />
                     : displayMode === 'List' ?
                         <VideoList key={video.id} {...video} />
                     : null
                 ))}
-            </VideoSection>
+            </VideoLayout>
         </div>
     )
 }

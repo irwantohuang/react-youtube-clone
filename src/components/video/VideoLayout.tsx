@@ -1,7 +1,7 @@
 import { Children } from "react";
 import Button from "../elements/Button";
 import { LayoutGrid, List } from "lucide-react";
-import { VideoSectionProps } from "../../types/videoProps";
+import { VideoLayoutProps } from "../../types/videoProps";
 import { Link } from "react-router-dom";
 
 const displayModes = [
@@ -9,13 +9,13 @@ const displayModes = [
     { name: "List", icon: List, path: "/subscriptions?flow=2" },
 ];
 
-const VideoSection = ({ title, children, visibleItem, displayMode }: VideoSectionProps) => {
+const VideoLayout = ({ title, children, visibleItem, displayMode }: VideoLayoutProps) => {
 
     const items = Children.toArray(children).flat();
     const visibleItems = items.slice(0, visibleItem);
 
     return (
-        <section className={`video-section relative w-full flex flex-col items-start gap-2 ${displayMode === 'Grid' ? '' : 'container mx-auto max-w-screen-xl'}`}>
+        <section className={`video-layout relative w-full flex flex-col items-start gap-2 ${displayMode === 'Grid' ? '' : 'container mx-auto max-w-screen-xl'}`}>
             {title && !displayMode && <span>{title}</span>}
 
             {title && displayMode &&
@@ -45,4 +45,4 @@ const VideoSection = ({ title, children, visibleItem, displayMode }: VideoSectio
     )
 }
 
-export default VideoSection;
+export default VideoLayout;

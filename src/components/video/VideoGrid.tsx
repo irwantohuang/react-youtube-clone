@@ -1,20 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import { VideoType } from "../../types/video";
 import Video from "./Video";
-
+import { useLocation } from "react-router-dom";
+import { handleEscKey } from "../../utils/utility";
 
 const VideoGrid = ({ contentDetails, channel }: VideoType) => {
     const [playVideo, setPlayVideo] = useState(false);
     const [showOption, setShowOption] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        const handleEscKey = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') setShowOption(false);
-        }
+    const location = useLocation();
+    const [type, setType] = useState("/");
 
-        document.addEventListener("keydown", handleEscKey);
-        return () => document.removeEventListener("keydown", handleEscKey)
+    useEffect(() => {
+        const pathName = location.pathname;
+        if (pathName === '/subscriptions') setType("subscriptions");
+        else if (pathName === "/") setType("home");
+    }, [location.pathname, type])
+
+    useEffect(() => {
+        return handleEscKey(() => setShowOption(false));
     }, [])
 
     return (
@@ -57,6 +62,7 @@ const VideoGrid = ({ contentDetails, channel }: VideoType) => {
                         showOption={showOption}
                         setShowOption={setShowOption}
                         containerRef={containerRef}
+                        type={type}
                     />
                 </Video.Body>
 
