@@ -75,8 +75,8 @@ const VideoList = ({ contentDetails, channel }: VideoType) => {
             <hr className="mb-6 mt-4" />
 
             <Video.Overlay 
-                showOption={showOption} 
-                setShowOption={setShowOption} 
+                isOpen={showOption} 
+                onClick={setShowOption} 
             />
         </Video>
     )

@@ -1,6 +1,7 @@
 import VideoBody from "./VideoBody";
 import VideoThumbnail from "./VideoThumbnail";
-import { VideoHeaderProps, VideoOverlayProps, VideoProps } from "../../types/videoProps";
+import { VideoHeaderProps, VideoProps } from "../../types/videoProps";
+import Overlay from "../modals/Overlay";
 
 const Video = ({ children }: VideoProps) => {
     return children
@@ -13,11 +14,6 @@ const Header = ({ profileUrl, channelName }: VideoHeaderProps) => {
             <span className="font-semibold">{channelName}</span>
         </a>
     </header>
-}
-
-const Overlay = ({ showOption, setShowOption }: VideoOverlayProps) => {
-    if (!showOption) return null
-    else return <div className="fixed inset-0 z-[1001] bg-secondary-dark/5" onClick={() => setShowOption(!showOption)} />
 }
 
 

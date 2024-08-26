@@ -35,8 +35,8 @@ input::-webkit-search-cancel-button {
 
 .text-clamp-2 {
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Menampilkan hanya dua baris */
+    -webkit-line-clamp: 2; 
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis; /* Menambahkan "..." di akhir baris yang terpotong */
+    text-overflow: ellipsis;
 }

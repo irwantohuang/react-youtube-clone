@@ -67,8 +67,8 @@ const VideoGrid = ({ contentDetails, channel }: VideoType) => {
                 </Video.Body>
 
                 <Video.Overlay
-                    showOption={showOption}
-                    setShowOption={setShowOption}
+                    isOpen={showOption}
+                    onClick={setShowOption}
                 />
             </Video>
         </section>

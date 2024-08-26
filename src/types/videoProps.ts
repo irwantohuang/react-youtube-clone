@@ -17,11 +17,6 @@ export interface VideoHeaderProps {
     channelName: string,
 }
 
-export interface VideoOverlayProps {
-    showOption: boolean,
-    setShowOption: (value: boolean) => void
-}
-
 export interface VideoThumbnailProps {
     videoId: string,
     thumbnailUrl: string,
@@ -65,5 +60,6 @@ export interface VideoBodyOptionProps {
     showOption: boolean,
     setShowOption: (value: boolean) => void,
     type: string,
-    containerRef: RefObject<HTMLDivElement>,
+    containerRef?: RefObject<HTMLDivElement>,
+    channelName?: string,
 }

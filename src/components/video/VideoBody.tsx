@@ -49,12 +49,12 @@ const Description = ({ description }: VideoBodyDescriptionProps) => {
 
 
 
-const Option = ({showOption, containerRef, type, setShowOption}: VideoBodyOptionProps) => {
+const Option = ({showOption, channelName, containerRef, type, setShowOption}: VideoBodyOptionProps) => {
     return <div className="relative">
         <Button variant="ghostNonHover" size="icon" className="w-8 h-8 m-0 p-1 justify-self-end" onClick={() => setShowOption(!showOption)}>
             <EllipsisVertical className="w-5 h-5" />
         </Button>
-        {showOption && <OptionModal type={type} targetRef={containerRef} showOption={showOption} />}
+        {showOption && <OptionModal type={type} targetRef={containerRef} showOption={showOption} channelName={channelName} />}
     </div>
 }
 

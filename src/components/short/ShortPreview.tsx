@@ -66,8 +66,8 @@ const ShortPreview = ({ contentDetails }: ShortProps) => {
             </div>
 
             <Video.Overlay 
-                showOption={showOption} 
-                setShowOption={setShowOption} 
+                isOpen={showOption} 
+                onClick={setShowOption} 
             />
         </div>
     )
