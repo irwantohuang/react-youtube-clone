@@ -47,7 +47,7 @@ const ShortPreview = ({ contentDetails }: ShortProps) => {
         <div
             onMouseEnter={() => setPlayVideo(true)}
             onMouseLeave={() => setPlayVideo(false)}
-            className="w-full flex flex-col gap-2 cursor-pointer"
+            className="w-full flex flex-col flex-grow gap-2 cursor-pointer"
             ref={containerRef}
         >
             <Link to={``} className="flex-grow relative aspect-[9/16] h-full rounded-2xl overflow-hidden">

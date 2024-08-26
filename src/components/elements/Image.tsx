@@ -9,7 +9,7 @@ const ImageVariants = cva('transition-all duration-300 object-cover', {
         variant: {
             profile: "rounded-full",
             thumbnail: "block w-full ",
-            short: "w-full h-full block rounded-2xl"
+            short: "aspect-[9/16] block rounded-2xl"
         },
         size: {
             'profile-small': "w-10 h-10"

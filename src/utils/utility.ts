@@ -53,14 +53,16 @@ export const getLink = (id: string, type: string) => {
 
 
 
-export const calculateVisibleItems = (contentWidth: number, columns: number): number => {
+export const calculateVisibleItems = (contentWidth: number, columns: number, type: string): number => {
     const isSmallScreen = () => window.innerWidth < 1024;
     const sidebarWidth = isSmallScreen() ? 72 : 304;
     let items = Math.floor(((window.innerWidth - sidebarWidth) / contentWidth) * columns);
 
-    if (items % 2 !== 0) items -= 1;
+    if (items % 2 !== 0 && type === 'video') items -= 1;
+
     return items;
 }
+
 
 export const handleEscKey = (callback: () => void) => {
     const handler = (event: KeyboardEvent) => {
