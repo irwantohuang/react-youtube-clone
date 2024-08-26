@@ -2,18 +2,17 @@ import VideoBody from "./VideoBody";
 import VideoThumbnail from "./VideoThumbnail";
 import { VideoHeaderProps, VideoProps } from "../../types/videoProps";
 import Overlay from "../modals/Overlay";
+import { Link } from "react-router-dom";
 
 const Video = ({ children }: VideoProps) => {
     return children
 }
 
-const Header = ({ profileUrl, channelName }: VideoHeaderProps) => {
-    return <header>
-        <a href="#" className="flex flex-shrink-0 items-center gap-2">
+const Header = ({ profileUrl, channelName, channelId }: VideoHeaderProps) => {
+    return <Link to={`/channel/${channelId}`} className="flex flex-shrink-0 items-center gap-2 cursor-pointer z-[10]">
             <img src={profileUrl} alt={channelName} className="w-8 h-8 rounded-full" />
             <span className="font-semibold">{channelName}</span>
-        </a>
-    </header>
+        </Link>
 }
 
 

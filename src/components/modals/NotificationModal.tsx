@@ -19,7 +19,7 @@ const NotificationModal = ({ children }: NotificationModalProps) => {
 
                     <hr />
 
-                <div className="overflow-y-scroll overflow-auto max-h-[500px] w-full scrollbar-hidden">
+                <div className="overflow-y-auto overflow-x-hidden max-h-[500px] w-full scrollbar-hidden">
                     {children}
                 </div>
 

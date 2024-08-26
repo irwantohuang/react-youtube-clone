@@ -15,6 +15,7 @@ export interface VideoProps {
 export interface VideoHeaderProps {
     profileUrl: string,
     channelName: string,
+    channelId: string,
 }
 
 export interface VideoThumbnailProps {
@@ -34,6 +35,7 @@ export interface VideoBodyProps {
 export interface VideoBodyProfileProps {
     profileUrl: string,
     channelName: string,
+    channelId: string,
 }
 
 export interface VideoBodyTitleProps {

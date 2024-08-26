@@ -42,6 +42,7 @@ const VideoGrid = ({ contentDetails, channel }: VideoType) => {
                         <Video.Body.Profile
                             profileUrl={channel.profileUrl}
                             channelName={channel.name}
+                            channelId={channel.id}
                         />
 
                         <div className="flex items-start flex-col">

@@ -15,10 +15,10 @@ const VideoBody = ({ children, displayMode }: VideoBodyProps) => {
     </div>;
 }
 
-const Profile = ({ profileUrl, channelName }: VideoBodyProfileProps) => {
-    return <a href="#" className="flex flex-shrink-0">
+const Profile = ({ profileUrl, channelName, channelId }: VideoBodyProfileProps) => {
+    return <Link to={`/channel/${channelId}`} className="flex flex-shrink-0">
         <Image src={profileUrl} alt={channelName} variant="profile" size="profile-small" />
-    </a>
+    </Link>
 }
 
 

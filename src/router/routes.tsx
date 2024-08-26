@@ -9,8 +9,8 @@ export const routes = [
         element: <MainLayout />,
         children: [
             { path: "/", element: <HomePage />, },
-            { path: "/channel/:id", element: <ChannelPage /> },
-            { path: "/watch/:id", element: <WatchPage /> },
+            { path: "/channel/:channelId", element: <ChannelPage /> },
+            { path: "/watch", element: <WatchPage /> },
             { path: "/subscriptions", element: <SubscriptionsPage /> },
         ]
     }

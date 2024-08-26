@@ -28,6 +28,7 @@ const VideoList = ({ contentDetails, channel }: VideoType) => {
                 <Video.Header 
                     profileUrl={channel.profileUrl} 
                     channelName={channel.name} 
+                    channelId={channel.id}
                 />
 
                 <section

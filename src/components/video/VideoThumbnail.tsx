@@ -33,7 +33,7 @@ const VideoThumbnail = ({videoId, thumbnailUrl, title, playVideo, videoDuration,
 
 
     return (
-        <Link to={`/watch/${videoId}`} className={`relative aspect-video overflow-hidden transition-all duration-300 ${playVideo ? 'rounded-none' : 'rounded-xl'}`}>
+        <Link to={`/watch?v=${videoId}`} className={`relative aspect-video overflow-hidden transition-all duration-300 ${playVideo ? 'rounded-none' : 'rounded-xl'}`}>
             <Image src={thumbnailUrl} alt={title} variant="thumbnail" className={`${playVideo ? 'rounded-none' : 'rounded-xl'}`} />
             <span className="bg-slate-800/50 text-slate-200 text-xs absolute bottom-1 right-1 rounded px-2">{formatDuration(videoDuration)}</span>
             <video src={videoUrl} ref={videoRef} muted playsInline className={`absolute inset-0 h-full object-cover transition-all duration-150 ${playVideo ? 'opacity-100 delay-150' : 'opacity-0'}`} />
