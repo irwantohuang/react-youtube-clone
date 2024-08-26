@@ -21,18 +21,18 @@ const NotificationCard = ({profileUrl, activity, thumbnailUrl, channelName, titl
     const [showOption, setShowOption] = useState(false);
 
     return (
-        <Button variant="ghost" className="w-full flex items-start gap-4 px-2 py-4">
+        <Button variant="ghost" className="w-full flex items-start gap-1 md:gap-4 px-2 py-4">
             <div className={`flex flex-shrink-0 items-center ${hasSeen ? 'ps-4' : ''}`}>
                 { !hasSeen && <Dot className="w-4 h-4 text-blue-500 text-3xl" />}
                 <Image src={profileUrl} variant="profile" size="profile-small" />
             </div>
 
-            <div className="flex flex-col gap-2 text-start flex-grow">
+            <div className="ps-2 flex flex-col gap-2 text-start flex-grow">
                 <span className="italic text-sm">{`${channelName} ${activity === 'live' ? 'is live: ' : 'uploaded: '} ${title}`}</span>
                 <span className="italic text-xs text-secondary-text">{formatPublishedAt(postedAt)}</span>
             </div>
 
-            <div className="max-w-[100px] rounded-md overflow-hidden">
+            <div className="max-w-[75px] md:max-w-[100px] rounded-md overflow-hidden">
                 <Image src={thumbnailUrl} alt={title} variant="thumbnail" />
             </div>
 

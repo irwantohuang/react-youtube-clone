@@ -27,7 +27,7 @@ const EndHeader = ({ showSearch, handleShowSearch }: EndHeaderProps) => {
                 <MonitorUp />
             </Button>
             <div className="relative">
-                <Button size="icon" variant="ghost" tooltip="Notifications" onClick={() => setShowNotification(!showNotification)}>
+                <Button size="icon" variant="ghost" tooltip="Notifications" notification={10} onClick={() => setShowNotification(!showNotification)}>
                     <Bell />
                 </Button>
                 {showNotification &&

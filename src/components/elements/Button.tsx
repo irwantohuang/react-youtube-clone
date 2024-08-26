@@ -23,10 +23,11 @@ const buttonVariants = cva('transition-all', {
 })
 
 interface ButtonProps extends VariantProps<typeof buttonVariants>, ComponentProps<"button"> {
-    tooltip?: string
+    tooltip?: string,
+    notification?: number,
 }
 
-const Button = ({ variant, size, className, children, tooltip, ...props }: ButtonProps) => {
+const Button = ({ variant, size, className, children, tooltip, notification, ...props }: ButtonProps) => {
     return (
         <div className="relative group">
             <button
@@ -35,8 +36,14 @@ const Button = ({ variant, size, className, children, tooltip, ...props }: Butto
             >
                 {children}
             </button>
-            
-            { tooltip && <Tooltip tooltip={tooltip} /> }
+
+            {notification && <div className="absolute top-0 right-1">
+                <span className={`rounded-full bg-primary text-secondary ${notification > 9 ? 'text-[10px] px-0.5' : 'text-[11px] px-1'}`}>
+                    {notification > 9 ? '9+' : notification}
+                </span>
+            </div>}
+
+            {tooltip && <Tooltip tooltip={tooltip} />}
         </div>
 
     )

@@ -8,7 +8,7 @@ interface NotificationModalProps {
 
 const NotificationModal = ({ children }: NotificationModalProps) => {
     return (
-            <div className="bg-white rounded-md z-[1002] w-[500px] shadow-md absolute right-full">
+            <div className="bg-white rounded-md z-[1002] w-[350px] sm:w-[400px] md:w-[500px] shadow-md absolute right-0">
                 <div className="w-full">
                     <div className="flex items-center justify-between px-4 py-1">
                         <span className="italic">Notification</span>
