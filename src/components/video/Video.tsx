@@ -9,7 +9,7 @@ const Video = ({ children }: VideoProps) => {
 }
 
 const Header = ({ profileUrl, channelName, channelId }: VideoHeaderProps) => {
-    return <Link to={`/channel/${channelId}`} className="flex flex-shrink-0 items-center gap-2 cursor-pointer z-[10]">
+    return <Link to={`/channel/${channelId}`} className="flex z-[10] items-center gap-2 cursor-pointer">
             <img src={profileUrl} alt={channelName} className="w-8 h-8 rounded-full" />
             <span className="font-semibold">{channelName}</span>
         </Link>

@@ -15,7 +15,7 @@ const SubscriptionsPage = () => {
         const handler = () => {
             const w = window.innerWidth
             if (w < 640) setVisibleItem(4)
-            if (w >= 640) setVisibleItem(calculateVisibleItems(311, 2))
+            if (w >= 640) setVisibleItem(calculateVisibleItems(311, 2, "video"))
         }
         handler();
         window.addEventListener("resize", handler);

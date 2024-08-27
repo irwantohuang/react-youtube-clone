@@ -22,7 +22,7 @@ const VideoLayout = ({ title, children, visibleItem, displayMode }: VideoLayoutP
                 <div className={`flex items-center w-full ${displayMode === 'List' ? 'justify-end absolute' : 'justify-between h-14'}`}>
                     {displayMode === 'Grid' && <span className="font-bold text-lg">{title}</span>}
 
-                    <div className="flex gap-1 items-center">
+                    <div className="flex gap-1 items-center z-20">
                         <Button variant="ghost" className="text-blue-500 font-bold text-sm rounded-full hover:bg-blue-100 px-4">Manage</Button>
                         {displayModes.map((mode) => (
                             <Link key={mode.name} to={mode.path}>
