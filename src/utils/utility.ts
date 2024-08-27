@@ -53,11 +53,16 @@ export const getLink = (id: string, type: string) => {
 
 
 
-export const calculateVisibleItems = (contentWidth: number, columns: number, type: string): number => {
+export const calculateVisibleItems = (contentWidth: number, columns: number, type: string, width?: number): number => {
     const isSmallScreen = () => window.innerWidth < 1024;
     const sidebarWidth = isSmallScreen() ? 72 : 304;
-    let items = Math.floor(((window.innerWidth - sidebarWidth) / contentWidth) * columns);
+    let items;
 
+    if (width) {
+        items = Math.floor((width / contentWidth) * columns);
+    } else {
+        items = Math.floor(((window.innerWidth - sidebarWidth) / contentWidth) * columns);
+    }
     if (items % 2 !== 0 && type === 'video') items -= 1;
 
     return items;

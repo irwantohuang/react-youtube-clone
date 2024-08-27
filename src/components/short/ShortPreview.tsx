@@ -50,16 +50,16 @@ const ShortPreview = ({ contentDetails }: ShortProps) => {
             className="w-full flex flex-col flex-grow gap-2 cursor-pointer"
             ref={containerRef}
         >
-            <Link to={``} className="flex-grow relative aspect-[9/16] h-full rounded-2xl overflow-hidden">
-                <Image src={contentDetails.thumbnailUrl} variant="short" className="z-10" />
+            <Link to={``} className="relative aspect-[9/16] rounded-2xl overflow-hidden">
+                <Image src={contentDetails.thumbnailUrl} variant="short" className="z-10 object-cover" />
 
                 <video src={contentDetails.shortUrl} ref={videoRef} muted playsInline className={`absolute inset-0 h-full object-cover transition-all duration-200 ${playVideo ? 'opacity-100 delay-300' : 'opacity-0'}`} />
             </Link>
 
             <div className="short-preview-footer flex-shrink flex justify-between">
                 <div className="flex flex-col gap-1">
-                    <span>{contentDetails.title}</span>
-                    <span>{formatViews(contentDetails.viewCount)} views</span>
+                    <span className="font-medium text-clamp-2">{contentDetails.title}</span>
+                    <span className="text-sm text-secondary-text">{formatViews(contentDetails.viewCount)} views</span>
                 </div>
 
                 <Video.Body.Option showOption={showOption} setShowOption={setShowOption} containerRef={containerRef} type="shorts" />
