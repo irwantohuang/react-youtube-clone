@@ -1,6 +1,7 @@
 import MainLayout from "../layouts/MainLayout";
 import ChannelPage from "../pages/ChannelPage";
 import HomePage from "../pages/HomePage";
+import NotFoundPage from "../pages/public/NotFoundPage";
 import SubscriptionsPage from "../pages/SubscriptionsPage";
 import WatchPage from "../pages/WatchPage";
 
@@ -12,6 +13,7 @@ export const routes = [
             { path: "/channel/:channelId", element: <ChannelPage /> },
             { path: "/watch", element: <WatchPage /> },
             { path: "/subscriptions", element: <SubscriptionsPage /> },
+            { path: "*", element: <NotFoundPage /> }
         ]
     }
 ]
