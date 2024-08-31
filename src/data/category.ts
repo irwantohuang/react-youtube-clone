@@ -22,5 +22,17 @@ export const categories = [
     'Coding',
     'Recently uploaded',
     'Watched',
-    'New to you'
+    'New to you',
+]
+
+
+export const videoCategories = [
+    'All', 
+    'From (detail)',
+    'Related',
+    'Watched',
+    'New to you',
+    'Coding',
+    'Frontend Web Developer',
+    'Backend Web Developer',
 ]

@@ -1,6 +1,6 @@
 import Button from "../elements/Button";
 import { RefObject, useEffect, useRef, useState } from "react";
-import { homeOptions, notificationOptions, shortOptions, subscriptionOptions } from "../../data/options";
+import { homeOptions, notificationOptions, shortOptions, subscriptionOptions, watchOptions } from "../../data/options";
 
 interface OptionModalProps {
     targetRef?: RefObject<HTMLDivElement>;
@@ -19,6 +19,7 @@ const OptionModal = ({ targetRef, type, showOption, channelName }: OptionModalPr
         case "subscriptions": options = subscriptionOptions; break;
         case "shorts": options = shortOptions; break;
         case "notification": options = notificationOptions; break;
+        case "watch": options = watchOptions; break;
         default: options = homeOptions; break;
     }
 

@@ -16,7 +16,7 @@ const MainView = () => {
     }, [location.pathname])
 
     return (
-        <main className="w-full px-6 overflow-x-hidden h-auto">
+        <main className="w-full px-6 overflow-x-hidden h-auto pb-[60px]">
             <LoadingBar isLoading={isLoading} />
             <Outlet />
         </main>

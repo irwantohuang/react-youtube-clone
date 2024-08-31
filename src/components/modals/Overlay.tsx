@@ -4,7 +4,7 @@ interface OverlayProps {
 }
 
 const Overlay = ({isOpen, onClick}: OverlayProps) => {
-    if (isOpen) return <div onClick={() => onClick(!isOpen)} className="fixed inset-0 z-[1001] bg-secondary-dark/5" />
+    if (isOpen) return <div onClick={() => onClick(!isOpen)} className="fixed inset-0 z-[1001] bg-transparent" />
     else return null;
 
 }

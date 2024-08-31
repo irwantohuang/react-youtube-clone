@@ -7,7 +7,11 @@ interface SidebarProviderProps {
 interface SidebarContextType {
     isMobileOpen: boolean,
     isLargeOpen: boolean,
-    toggle: () => void
+    isWatchPage: boolean,
+    isWatchSidebar: boolean
+    toggle: () => void,
+    setIsWatchPage: (value: boolean) => void,
+    setLocation: (path: string) => void
 }
 
 const SidebarContext = createContext<SidebarContextType | null>(null);
@@ -23,18 +27,31 @@ export const useSidebarContext = () => {
 export const SidebarProvider = ({children}: SidebarProviderProps) => {
     const [isLargeOpen, setIsLargeOpen] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const [isWatchPage, setIsWatchPage] = useState(false);
+    const [isWatchSidebar, setIsWatchSidebar] = useState(false);
+    const [location, setLocation] = useState("")
 
     const isMobileScreen = () => {
         return window.innerWidth < 1024;
     }
 
     const toggle = () => {
-        if (isMobileScreen()) {
-            setIsMobileOpen(e => !e)
+        if (isWatchPage) {
+            setIsWatchSidebar(e => !e);
         } else {
-            setIsLargeOpen(e => !e)
+            if (isMobileScreen()) {
+                setIsMobileOpen(e => !e)
+            } else {
+                setIsLargeOpen(e => !e)
+            }
         }
     }
+
+    useEffect(() => {
+        setIsWatchSidebar(false);
+        setIsLargeOpen(false);
+        setIsMobileOpen(false);
+    }, [isWatchPage, location]); 
 
     useEffect(() => {
         const handleResize = () => {
@@ -43,7 +60,6 @@ export const SidebarProvider = ({children}: SidebarProviderProps) => {
         }
 
         window.addEventListener("resize", handleResize)
-
         return () => window.addEventListener("resize", handleResize);
     })
 
@@ -57,7 +73,7 @@ export const SidebarProvider = ({children}: SidebarProviderProps) => {
         return () => removeEventListener("keydown", handleEscape)
     })
 
-    return <SidebarContext.Provider value={{isLargeOpen, isMobileOpen, toggle}}>
+    return <SidebarContext.Provider value={{isLargeOpen, isMobileOpen, isWatchPage, isWatchSidebar, toggle, setIsWatchPage, setLocation}}>
         {children}
     </SidebarContext.Provider>
 }

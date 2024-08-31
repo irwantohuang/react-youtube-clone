@@ -1,14 +1,17 @@
-import { ArrowDownToLine, BellOff, BookMarked, CircleMinus, CircleSlash, EyeOff, Flag, Forward, History, ListVideo, MessageSquareWarning } from "lucide-react";
+import { ArrowDownToLine, BellOff, Bookmark, BookMarked, CircleMinus, CircleSlash, EyeOff, Flag, Forward, History, ListVideo, MessageSquareWarning, Scissors } from "lucide-react";
 
 
 const firstOptions = [
-    { name: 'Add to queue',             icon: ListVideo,        type: ['home', 'subscriptions'] },
-    { name: 'Save to watch alter',      icon: History,          type: ['home', 'subscriptions'] },
-    { name: 'Save to playlist',         icon: BookMarked,       type: ['home', 'subscriptions'] },
-    { name: 'Download',                 icon: ArrowDownToLine,  type: ['subscriptions'] },
-    { name: 'Share',                    icon: Forward,          type: ['home', 'shorts'] },
-    { name: 'Hide this notification',   icon: EyeOff,          type: ['notification'] },
-    { name: 'Turn off all from (channelName)',       icon: BellOff,          type: ['notification'] },
+    { name: 'Add to queue',                     icon: ListVideo,        type: ['home', 'subscriptions'] },
+    { name: 'Save to watch alter',              icon: History,          type: ['home', 'subscriptions'] },
+    { name: 'Save to playlist',                 icon: BookMarked,       type: ['home', 'subscriptions'] },
+    { name: 'Download',                         icon: ArrowDownToLine,  type: ['subscriptions'] },
+    { name: 'Share',                            icon: Forward,          type: ['home', 'shorts'] },
+    { name: 'Hide this notification',           icon: EyeOff,           type: ['notification'] },
+    { name: 'Turn off all from (channelName)',  icon: BellOff,          type: ['notification'] },
+    { name: 'Clip',                             icon: Scissors,        type: ['watch'] },
+    { name: 'Save',                             icon: Bookmark,       type: ['watch'] },
+    { name: 'Report',                           icon: Flag,             type: ['watch'] },
 ]
 const secondOptions = [
     { name: 'Not interested',           icon: CircleSlash,          type: ['home', 'shorts'] },
@@ -35,4 +38,8 @@ export const shortOptions = [
 
 export const notificationOptions = [
     { name: "first-options",    children: firstOptions.filter(v => v.type.includes("notification")) },
+]
+
+export const watchOptions = [
+    { name: "first-options",    children: firstOptions.filter(v => v.type.includes("watch")) },
 ]

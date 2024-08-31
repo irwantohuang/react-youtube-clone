@@ -20,7 +20,7 @@ const tooltipVariants = cva('absolute z-[9999] bg-secondary-dark/50 text-white r
 })
 
 interface TooltipProps extends VariantProps<typeof tooltipVariants> {
-    tooltip: string
+    tooltip: string | undefined
 }
 
 const Tooltip = ({ variant, size, tooltip }: TooltipProps) => {

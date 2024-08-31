@@ -4,10 +4,10 @@ import MainView from "./MainView";
 
 const MainLayout = () => {
     return (
-        <div className="max-h-screen flex flex-col overflow-x-hidden">
+        <div className="max-h-screen flex flex-col w-full overflow-x-hidden">
             <Header />
 
-            <div className="grid grid-cols-[auto,1fr] flex-grow overflow-auto">
+            <div className="flex-grow overflow-auto flex w-full mx-auto">
                 <Sidebar />
                 <MainView />
             </div>

@@ -8,25 +8,29 @@ const timeAgo: {amount: number, name: Intl.RelativeTimeFormatUnit}[] = [
     { amount: Number.POSITIVE_INFINITY, name: "years" },
 ]
 
-export const formatPublishedAt = (date: Date) => {
-    let duration = (date.getTime() - new Date().getTime()) / 1000;
+export const formatPublishedAt = (date: Date | undefined) => {
+    if (date) {
+        let duration = (date.getTime() - new Date().getTime()) / 1000;
 
-    for (let i = 0; i < timeAgo.length; i++ ) {
-        const division = timeAgo[i];
-        if (Math.abs(duration) < division.amount) {
-            return new Intl.RelativeTimeFormat(undefined, {
-                numeric: "always"
-            }).format(Math.round(duration), division.name);
+        for (let i = 0; i < timeAgo.length; i++ ) {
+            const division = timeAgo[i];
+            if (Math.abs(duration) < division.amount) {
+                return new Intl.RelativeTimeFormat(undefined, {
+                    numeric: "always"
+                }).format(Math.round(duration), division.name);
+            }
+            duration /= division.amount
         }
-        duration /= division.amount
     }
 }
 
 
-export const formatViews = (views: number) => {
-    return new Intl.NumberFormat(undefined, {
-        notation: "compact"
-    }).format(views);
+export const formatViews = (views: number | undefined) => {
+    if (views) {
+        return new Intl.NumberFormat(undefined, {
+            notation: "compact"
+        }).format(views);
+    }
 }
 
 export const formatDuration = (duration: number) => {
@@ -76,4 +80,15 @@ export const handleEscKey = (callback: () => void) => {
 
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
+}
+
+
+export const formatDate = (date: Date | undefined, type: number) => { 
+    if (date) {
+        if (type === 1) return date.toLocaleString('en-US', {
+            month: "short",
+            day: "2-digit",
+            year: "numeric"
+        });
+    }
 }

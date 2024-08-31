@@ -1,4 +1,4 @@
-import { BadgeCheck, EllipsisVertical } from "lucide-react";
+import { BadgeCheck, Ellipsis, EllipsisVertical } from "lucide-react";
 import { Link } from "react-router-dom";
 import Tooltip from "../elements/Tooltip";
 import { formatPublishedAt, formatViews } from "../../utils/utility";
@@ -23,14 +23,18 @@ const Profile = ({ profileUrl, channelName, channelId }: VideoBodyProfileProps) 
 
 
 const Title = ({ title }: VideoBodyTitleProps) => {
-    return <div className="flex text-clamp-2 font-medium">{title}</div>
+    return <div className="flex text-clamp-2 font-medium text-sm lg:text-base">{title}</div>
 }
 
-const Account = ({ channelId, channelName, channelVerified }: VideoBodyAccountProps) => {
-    return <Link to={`/channel/${channelId}`} className="text-slate-700 text-sm inline-flex items-center gap-1 relative group">
-        {channelName}
-        {channelVerified && <BadgeCheck className="w-4 h-4" />}
+const Account = ({ channelId, channelName, channelVerified, channelSubscribers }: VideoBodyAccountProps) => {
+    return <Link to={`/channel/${channelId}`} className={`${channelSubscribers ? 'text-sm lg:text-base whitespace-nowrap text-secondary-dark font-semibold gap-0' : 'text-slate-700 text-xs lg:text-sm '} inline-flex flex-col items-start gap-1 relative group`}>
+        <span className="flex items-center gap-2">
+            {channelName}
+            {channelVerified && <BadgeCheck className="w-4 h-4" fill="gray" />}
+        </span>
         <Tooltip variant="top" size="small" tooltip={channelName} />
+
+        {channelSubscribers && <span className="text-secondary-border text-xs lg:text-sm">{formatViews(channelSubscribers)} subscribers</span>}
     </Link>
 }
 
@@ -49,10 +53,10 @@ const Description = ({ description }: VideoBodyDescriptionProps) => {
 
 
 
-const Option = ({showOption, channelName, containerRef, type, setShowOption}: VideoBodyOptionProps) => {
+const Option = ({ showOption, channelName, containerRef, type, setShowOption }: VideoBodyOptionProps) => {
     return <div className="relative">
-        <Button variant="ghostNonHover" size="icon" className="w-8 h-8 m-0 p-1 justify-self-end" onClick={() => setShowOption(!showOption)}>
-            <EllipsisVertical className="w-5 h-5" />
+        <Button variant={`${type === 'watch' ? 'default' : 'ghostNonHover'}`} size="icon" className="w-8 h-8 m-0 p-1 justify-self-end" onClick={() => setShowOption(!showOption)}>
+            {type === 'watch' ? <Ellipsis className="w-5 h-5" /> : <EllipsisVertical className="w-5 h-5" />}
         </Button>
         {showOption && <OptionModal type={type} targetRef={containerRef} showOption={showOption} channelName={channelName} />}
     </div>

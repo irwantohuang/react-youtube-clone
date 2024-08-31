@@ -43,9 +43,10 @@ export interface VideoBodyTitleProps {
 }
 
 export interface VideoBodyAccountProps {
-    channelId: string,
-    channelName: string,
+    channelId: string | undefined,
+    channelName: string | undefined,
     channelVerified: boolean,
+    channelSubscribers?: number 
 }
 
 export interface VideoBodyFooterProps {

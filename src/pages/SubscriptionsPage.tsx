@@ -27,7 +27,6 @@ const SubscriptionsPage = () => {
 
             // short items
             if (sectionRef?.current) {
-                console.log(sectionRef.current.clientWidth)
                 if (displayMode === 'List') setShortVisibleItem(calculateVisibleItems(212, 1, "short", sectionRef.current.clientWidth))
                 else setShortVisibleItem(calculateVisibleItems(225, 1, "short"))
             }

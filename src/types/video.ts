@@ -11,6 +11,7 @@ export interface VideoType {
         likeCount: number,
         commentCount: number,
         description: string
+        isLiked: boolean,
     },
     channel: {
         name: string,

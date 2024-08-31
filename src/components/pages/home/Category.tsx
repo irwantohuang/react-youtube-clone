@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Button from "../../elements/Button"
 import { useEffect, useRef, useState } from "react"
+import { useLocation } from "react-router-dom"
 
 interface CategoryProps {
     categories: string[],
@@ -14,6 +15,7 @@ const Category = ({ categories, selected, onSelect }: CategoryProps) => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const [showNext, setShowNext] = useState(false);
     const [showPrevious, setShowPrevious] = useState(false)
+    const location = useLocation();
 
     const handleClick = (type: string) => {
         if (type === 'previous') {
@@ -52,7 +54,7 @@ const Category = ({ categories, selected, onSelect }: CategoryProps) => {
     }, [categories, translate])
 
     return (
-        <section className="category sticky top-0 overflow-hidden z-10 h-14 flex items-center bg-white">
+        <section className={`category h-14 flex items-center overflow-hidden ${location.pathname === 'home' ? 'sticky top-0 z-10' : ''}`}>
             <div ref={sectionRef} className="overflow-hidden relative">
                 <div className="flex whitespace-nowrap gap-4 transition-transform w-[max-content]" style={{ transform: `translateX(-${translate}px)` }}>
                     {categories.map((category) => (
