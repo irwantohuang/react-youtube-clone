@@ -29,7 +29,7 @@ const ShortLayout = ({ children, visibleItem }: ShortLayoutProps) => {
                     onClick={() => setIsExpanded(e => !e)}
                     variant="ghost" 
                     className="px-36 py-1 rounded-full border border-secondary-border text-sm bg-white z-10 flex gap-1 items-center">
-                    Show more 
+                    {isExpanded ? 'Show less' : 'Show more'}
                     <ButtonIcon />
                 </Button>
             </div>
